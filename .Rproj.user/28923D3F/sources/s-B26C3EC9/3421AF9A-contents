@@ -1,0 +1,68 @@
+---
+title: "Project 2"
+showpagemeta: false
+author: "Tiffany Moyeda (ttm525)"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+ 
+---
+```{r global_options, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(readr)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+library(dplyr)
+library(tibble)
+library(tinytex)
+opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, fig.width=8,tidy.opts=list(width.cutoff=60),tidy=TRUE, R.options=list(max.print=100))
+```
+
+*The following data there are 303 items (patients) and 13 predictor variables (age, sex, cholesterol, etc.) The variable to predict is encoded as 0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease. The following varaibles are the ones that I will be focusing on: Sex = (1 = male; 0 = female), thalach = maximum heart rate achieved, cp = chest pain type (0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease), trestbps = resting blood pressure (in mm Hg on admission to the hospital), and chol = serum cholestoral in mg/dl.* 
+
+```{r}
+heart <- read_csv("heart.csv")
+head(heart)
+```
+
+
+```{r}
+#MANOVA
+man1<-manova(cbind(thalach, chol, trestbps)~cp, data=heart)
+summary(man1)
+summary.aov(man1) 
+heart%>%group_by(cp)%>%summarize(mean(thalach),mean(chol), mean(trestbps))
+
+pairwise.t.test(heart$thalach, heart$cp,
+                p.adj="none")
+
+```
+*A one-way MANOVA was conducted to determine the effect of the chest pain type on the variables thalach, chol, and trestbps. Since overall MANOVA was significant, follow-up one-way ANOVAs for each dependent variable were conducted. Once the ANOVA was run, it was shown that only the thalach, or the maximum heart rate acheived, was significant. There was 1 MANOVA, 2 ANOVAs, and 4 t-tests performed meaning bonferroni α = .05/8 = 0.00625. Post hoc analysis was performed conducting pairwise t-tests to determine which category of chest pain differed in maximum heart rate. Chest pain level of 0 was determined to differ significantly in terms of maximum heart rate after adjusting for multiple comparisons. *
+
+```{r}
+
+#Randomization test 
+
+male <- heart %>% filter( sex == 1) 
+female <- heart %>% filter (sex == 0) 
+
+
+heart%>%group_by(sex)%>%summarize(s=sd(chol))%>%summarize(diff(s))
+
+rand_dist<-vector()
+for(i in 1:5000){
+new<-data.frame(chol=sample(heart$chol),sex=heart$sex)
+rand_dist[i]<-mean(new[new$sex=="0",]$chol)-
+mean(new[new$sex=="1",]$chol)}
+{hist(rand_dist, main="",ylab=""); abline(v = -22.01223,col="red") ; abline (v = 22.01223,col="red")}
+mean(rand_dist< -22.0 | rand_dist > 22.0)
+
+t.test(data=heart,chol~sex)
+
+```
+*The null hypothesis is the mean cholesterol level is the same for males and females and the alternative hypothesis is that the mean cholesterol level is differnt between males and females. After running the randomization test and the t-test we are able to see that there is a significant difference between males and females when observing their cholesterol levels.  * 
+
+```{r}
