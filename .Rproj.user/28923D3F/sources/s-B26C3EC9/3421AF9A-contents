@@ -3,10 +3,9 @@ title: "Project 2"
 showpagemeta: false
 author: "Tiffany Moyeda (ttm525)"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
- 
 ---
 ```{r global_options, include=FALSE}
 library(knitr)
@@ -18,6 +17,8 @@ library(lubridate)
 library(dplyr)
 library(tibble)
 library(tinytex)
+library(lmtest)
+library(sandwich)
 opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, fig.width=8,tidy.opts=list(width.cutoff=60),tidy=TRUE, R.options=list(max.print=100))
 ```
 
@@ -66,3 +67,73 @@ t.test(data=heart,chol~sex)
 *The null hypothesis is the mean cholesterol level is the same for males and females and the alternative hypothesis is that the mean cholesterol level is differnt between males and females. After running the randomization test and the t-test we are able to see that there is a significant difference between males and females when observing their cholesterol levels.  * 
 
 ```{r}
+ #Linear Regression
+
+heart$thalach_c <- heart$thalach - mean(heart$thalach)
+heart$trestbps_c <- heart$trestbps - mean(heart$trestbps)
+
+fit <- lm(chol ~ thalach_c* trestbps_c, data=heart)
+summary(fit)
+
+ggplotRegression <- function (fit) {
+
+require(ggplot2)
+
+ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red") +
+  labs(title = paste("Adj R2 = ",signif(summary(fit)$adj.r.squared, 5),
+                     "Intercept =",signif(fit$coef[[1]],5 ),
+                     " Slope =",signif(fit$coef[[2]], 5),
+                     " P =",signif(summary(fit)$coef[2,4], 5)))
+}
+
+ggplotRegression(fit)
+
+## assumptions
+resids<-fit$residuals; fitvals<-fit$fitted.values
+ggplot()+geom_point(aes(fitvals,resids))+geom_hline(yintercept=0, col="red")
+
+
+coeftest(fit)[,1:2] ## Normal-theory SEs
+
+coeftest(fit, vcov=vcovHC(fit))[,1:2] ## Robust SEs
+
+```
+
+*For every 1 mg/dl increase in a patient's cholesterol there is a decrease of 0.0090 in maximum heart rate when all other variables are constant. For every 1 mg/dl increase in a patient's cholesterol  there is a increase of 0.358 in resting blood pressuure when all other variables are constant. When looking at both variables, there is a 0.0036 decrease in cholesterol. *
+
+```{r}
+
+samp_distn<-replicate(5000, {
+boot_dat<-boot_dat<-heart[sample(nrow(heart),replace=TRUE),]
+fit2 <- lm(chol ~ thalach_c* trestbps_c, data=heart)
+coef(fit2)
+})
+
+## Estimated SEs
+samp_distn%>%t%>%as.data.frame%>%summarize_all(sd)
+
+```
+
+```{r}
+#Logistic Regression 
+data<-heart%>%mutate(y=ifelse(sex=="1",1,0))
+head(data)
+
+fit3<-glm(y~chol,data=data,family=binomial(link="logit"))
+coeftest(fit3)
+exp(coef(fit3))
+
+## Confusion matrix
+probs<-predict(fit3,type="response")
+table(predict=as.numeric(probs>.5),truth=data$y)%>%addmargins
+
+## plot density
+data$logit<-predict(fit3,type="link")
+data%>%ggplot()+geom_density(aes(logit,color=sex,fill=sex), alpha=.4)+
+  theme(legend.position=c(.85,.85))+geom_vline(xintercept=0)+xlab("logit (log-odds)")+
+  geom_rug(aes(logit,color=sex))
+
+```
+*The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.*
