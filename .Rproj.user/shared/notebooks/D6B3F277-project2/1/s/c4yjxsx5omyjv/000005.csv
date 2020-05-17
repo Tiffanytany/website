@@ -1,0 +1,8 @@
+"0","for(i in 1:5000){
+new<-data.frame(chol=sample(heart$chol),sex=heart$sex)
+rand_dist[i]<-mean(new[new$sex==""0"",]$chol)-
+mean(new[new$sex==""1"",]$chol)}
+*For every 1 mg/dl increase in a patient's cholesterol there is a decrease of 0.0090 in maximum heart rate when all other variables are constant. For every 1 mg/dl increase in a patient's cholesterol  there is a increase of 0.358 in resting blood pressuure when all other variables are constant. When looking at both variables, there is a 0.0036 decrease in cholesterol. *
+"
+"2","Error: unexpected '*' in ""*""
+"

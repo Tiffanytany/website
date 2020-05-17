@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589699095506.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4165606163",
+    "id" : "2327956C",
+    "lastKnownWriteTime" : 1589699133,
+    "last_content_update" : 1589699133770,
+    "path" : "~/Website.Project 3/Website/content/Project2.0.Rmd",
+    "project_path" : "content/Project2.0.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

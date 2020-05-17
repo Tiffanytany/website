@@ -2,9 +2,9 @@
 title: "Project 2"
 author: "Tiffany Moyeda (ttm525)"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 ```{r global_options, include=FALSE}
 library(knitr)
@@ -25,7 +25,7 @@ opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, fig.width=8,tidy
 *The following data there are 303 items (patients) and 13 predictor variables (age, sex, cholesterol, etc.) The variable to predict is encoded as 0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease. The following varaibles are the ones that I will be focusing on: Sex = (1 = male; 0 = female), thalach = maximum heart rate achieved, cp = chest pain type (0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease), trestbps = resting blood pressure (in mm Hg on admission to the hospital), and chol = serum cholestoral in mg/dl.* 
 
 ```{r}
-heart <- read_csv("heart.csv")
+heart <- read_csv("Downloads/heart.csv")
 head(heart)
 ```
 
@@ -137,7 +137,3 @@ data%>%ggplot()+geom_density(aes(logit,color=sex,fill=sex), alpha=.4)+
 
 ```
 *The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.*
-*The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.*
-
-
-

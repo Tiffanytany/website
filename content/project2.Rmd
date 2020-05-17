@@ -1,11 +1,10 @@
 ---
 title: "Project 2"
-showpagemeta: false
 author: "Tiffany Moyeda (ttm525)"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 ```{r global_options, include=FALSE}
 library(knitr)
@@ -19,6 +18,7 @@ library(tibble)
 library(tinytex)
 library(lmtest)
 library(sandwich)
+library
 opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, fig.width=8,tidy.opts=list(width.cutoff=60),tidy=TRUE, R.options=list(max.print=100))
 ```
 
@@ -137,3 +137,6 @@ data%>%ggplot()+geom_density(aes(logit,color=sex,fill=sex), alpha=.4)+
 
 ```
 *The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.*
+*The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.*
+
+
