@@ -2,18 +2,18 @@
     "collab_server" : "",
     "contents" : "",
     "created" : 1589601877960.000,
-    "dirty" : true,
+    "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
     "id" : "3421AF9A",
-    "lastKnownWriteTime" : 1589700089,
-    "last_content_update" : 1589700338559,
+    "lastKnownWriteTime" : 1589701224,
+    "last_content_update" : 1589701224062,
     "path" : "~/Website.Project 3/Website/content/project2.Rmd",
     "project_path" : "content/project2.Rmd",
     "properties" : {
-        "cursorPosition" : "142,0",
-        "scrollLine" : "134"
+        "cursorPosition" : "4,19",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

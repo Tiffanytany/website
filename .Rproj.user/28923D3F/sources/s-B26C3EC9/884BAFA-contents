@@ -1,0 +1,509 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Project 2},
+            pdfauthor={Tiffany Moyeda (ttm525)},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Project 2}
+\author{Tiffany Moyeda (ttm525)}
+\date{}
+
+\begin{document}
+\maketitle
+
+\emph{The following data there are 303 items (patients) and 13 predictor
+variables (age, sex, cholesterol, etc.) The variable to predict is
+encoded as 0 to 4 where 0 means no heart disease and 1-4 means presence
+of heart disease. The following varaibles are the ones that I will be
+focusing on: Sex = (1 = male; 0 = female), thalach = maximum heart rate
+achieved, cp = chest pain type (0 to 4 where 0 means no heart disease
+and 1-4 means presence of heart disease), trestbps = resting blood
+pressure (in mm Hg on admission to the hospital), and chol = serum
+cholestoral in mg/dl.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heart <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"heart.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(heart)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 14
+##     age   sex    cp trestbps  chol   fbs restecg thalach exang oldpeak slope
+##   <dbl> <dbl> <dbl>    <dbl> <dbl> <dbl>   <dbl>   <dbl> <dbl>   <dbl> <dbl>
+## 1    63     1     3      145   233     1       0     150     0     2.3     0
+## 2    37     1     2      130   250     0       1     187     0     3.5     0
+## 3    41     0     1      130   204     0       0     172     0     1.4     2
+## 4    56     1     1      120   236     0       1     178     0     0.8     2
+## 5    57     0     0      120   354     0       1     163     1     0.6     2
+## 6    57     1     0      140   192     0       1     148     0     0.4     1
+## # ... with 3 more variables: ca <dbl>, thal <dbl>, target <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#MANOVA}
+\NormalTok{man1<-}\KeywordTok{manova}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(thalach, chol, trestbps)}\OperatorTok{~}\NormalTok{cp, }\DataTypeTok{data=}\NormalTok{heart)}
+\KeywordTok{summary}\NormalTok{(man1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            Df   Pillai approx F num Df den Df    Pr(>F)    
+## cp          1 0.098003   10.829      3    299 8.961e-07 ***
+## Residuals 301                                              
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary.aov}\NormalTok{(man1) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Response thalach :
+##              Df Sum Sq Mean Sq F value    Pr(>F)    
+## cp            1  13860 13859.9  28.854 1.564e-07 ***
+## Residuals   301 144583   480.3                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+##  Response chol :
+##              Df Sum Sq Mean Sq F value Pr(>F)
+## cp            1   4798  4798.3  1.7908 0.1818
+## Residuals   301 806503  2679.4               
+## 
+##  Response trestbps :
+##              Df Sum Sq Mean Sq F value Pr(>F)
+## cp            1    211  210.54  0.6838 0.4089
+## Residuals   301  92681  307.91
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heart}\OperatorTok{%>%}\KeywordTok{group_by}\NormalTok{(cp)}\OperatorTok{%>%}\KeywordTok{summarize}\NormalTok{(}\KeywordTok{mean}\NormalTok{(thalach),}\KeywordTok{mean}\NormalTok{(chol), }\KeywordTok{mean}\NormalTok{(trestbps))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 4
+##      cp `mean(thalach)` `mean(chol)` `mean(trestbps)`
+##   <dbl>           <dbl>        <dbl>            <dbl>
+## 1     0            141.         250.             132.
+## 2     1            162.         245.             128.
+## 3     2            156.         243.             130.
+## 4     3            156.         237.             141.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairwise.t.test}\NormalTok{(heart}\OperatorTok{$}\NormalTok{thalach, heart}\OperatorTok{$}\NormalTok{cp,}
+                \DataTypeTok{p.adj=}\StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  heart$thalach and heart$cp 
+## 
+##   0       1      2     
+## 1 1.2e-09 -      -     
+## 2 3.2e-07 0.0713 -     
+## 3 0.0013  0.2273 0.9443
+## 
+## P value adjustment method: none
+\end{verbatim}
+
+\emph{A one-way MANOVA was conducted to determine the effect of the
+chest pain type on the variables thalach, chol, and trestbps. Since
+overall MANOVA was significant, follow-up one-way ANOVAs for each
+dependent variable were conducted. Once the ANOVA was run, it was shown
+that only the thalach, or the maximum heart rate acheived, was
+significant. There was 1 MANOVA, 2 ANOVAs, and 4 t-tests performed
+meaning bonferroni α = .05/8 = 0.00625. Post hoc analysis was performed
+conducting pairwise t-tests to determine which category of chest pain
+differed in maximum heart rate. Chest pain level of 0 was determined to
+differ significantly in terms of maximum heart rate after adjusting for
+multiple comparisons. }
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Randomization test }
+
+\NormalTok{male <-}\StringTok{ }\NormalTok{heart }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{( sex }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{) }
+\NormalTok{female <-}\StringTok{ }\NormalTok{heart }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{ (sex }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }
+
+
+\NormalTok{heart}\OperatorTok{%>%}\KeywordTok{group_by}\NormalTok{(sex)}\OperatorTok{%>%}\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{s=}\KeywordTok{sd}\NormalTok{(chol))}\OperatorTok{%>%}\KeywordTok{summarize}\NormalTok{(}\KeywordTok{diff}\NormalTok{(s))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   `diff(s)`
+##       <dbl>
+## 1     -22.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rand_dist<-}\KeywordTok{vector}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{5000}\NormalTok{)\{}
+\NormalTok{new<-}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{chol=}\KeywordTok{sample}\NormalTok{(heart}\OperatorTok{$}\NormalTok{chol),}\DataTypeTok{sex=}\NormalTok{heart}\OperatorTok{$}\NormalTok{sex)}
+\NormalTok{rand_dist[i]<-}\KeywordTok{mean}\NormalTok{(new[new}\OperatorTok{$}\NormalTok{sex}\OperatorTok{==}\StringTok{"0"}\NormalTok{,]}\OperatorTok{$}\NormalTok{chol)}\OperatorTok{-}
+\KeywordTok{mean}\NormalTok{(new[new}\OperatorTok{$}\NormalTok{sex}\OperatorTok{==}\StringTok{"1"}\NormalTok{,]}\OperatorTok{$}\NormalTok{chol)\}}
+\NormalTok{\{}\KeywordTok{hist}\NormalTok{(rand_dist, }\DataTypeTok{main=}\StringTok{""}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{""}\NormalTok{); }\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =} \FloatTok{-22.01223}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{) ; }\KeywordTok{abline}\NormalTok{ (}\DataTypeTok{v =} \FloatTok{22.01223}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{project2_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(rand_dist}\OperatorTok{<}\StringTok{ }\FloatTok{-22.0} \OperatorTok{|}\StringTok{ }\NormalTok{rand_dist }\OperatorTok{>}\StringTok{ }\FloatTok{22.0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8e-04
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{data=}\NormalTok{heart,chol}\OperatorTok{~}\NormalTok{sex)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  chol by sex
+## t = 3.0244, df = 134.39, p-value = 0.002985
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   7.617474 36.406982
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        261.3021        239.2899
+\end{verbatim}
+
+\emph{The null hypothesis is the mean cholesterol level is the same for
+males and females and the alternative hypothesis is that the mean
+cholesterol level is differnt between males and females. After running
+the randomization test and the t-test we are able to see that there is a
+significant difference between males and females when observing their
+cholesterol levels. }
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{#Linear Regression}
+
+\NormalTok{heart}\OperatorTok{$}\NormalTok{thalach_c <-}\StringTok{ }\NormalTok{heart}\OperatorTok{$}\NormalTok{thalach }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(heart}\OperatorTok{$}\NormalTok{thalach)}
+\NormalTok{heart}\OperatorTok{$}\NormalTok{trestbps_c <-}\StringTok{ }\NormalTok{heart}\OperatorTok{$}\NormalTok{trestbps }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(heart}\OperatorTok{$}\NormalTok{trestbps)}
+
+\NormalTok{fit <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(chol }\OperatorTok{~}\StringTok{ }\NormalTok{thalach_c}\OperatorTok{*}\StringTok{ }\NormalTok{trestbps_c, }\DataTypeTok{data=}\NormalTok{heart)}
+\KeywordTok{summary}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = chol ~ thalach_c * trestbps_c, data = heart)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -125.02  -34.20   -5.40   27.72  323.23 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)          246.196995   2.972035  82.838   <2e-16 ***
+## thalach_c             -0.008973   0.129965  -0.069   0.9450    
+## trestbps_c             0.357710   0.170170   2.102   0.0364 *  
+## thalach_c:trestbps_c  -0.003585   0.007647  -0.469   0.6395    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 51.67 on 299 degrees of freedom
+## Multiple R-squared:  0.01591,    Adjusted R-squared:  0.006039 
+## F-statistic: 1.612 on 3 and 299 DF,  p-value: 0.1867
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ggplotRegression <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{ (fit) \{}
+
+\KeywordTok{require}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(fit}\OperatorTok{$}\NormalTok{model, }\KeywordTok{aes_string}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{names}\NormalTok{(fit}\OperatorTok{$}\NormalTok{model)[}\DecValTok{2}\NormalTok{], }\DataTypeTok{y =} \KeywordTok{names}\NormalTok{(fit}\OperatorTok{$}\NormalTok{model)[}\DecValTok{1}\NormalTok{])) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{stat_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Adj R2 = "}\NormalTok{,}\KeywordTok{signif}\NormalTok{(}\KeywordTok{summary}\NormalTok{(fit)}\OperatorTok{$}\NormalTok{adj.r.squared, }\DecValTok{5}\NormalTok{),}
+                     \StringTok{"Intercept ="}\NormalTok{,}\KeywordTok{signif}\NormalTok{(fit}\OperatorTok{$}\NormalTok{coef[[}\DecValTok{1}\NormalTok{]],}\DecValTok{5}\NormalTok{ ),}
+                     \StringTok{" Slope ="}\NormalTok{,}\KeywordTok{signif}\NormalTok{(fit}\OperatorTok{$}\NormalTok{coef[[}\DecValTok{2}\NormalTok{]], }\DecValTok{5}\NormalTok{),}
+                     \StringTok{" P ="}\NormalTok{,}\KeywordTok{signif}\NormalTok{(}\KeywordTok{summary}\NormalTok{(fit)}\OperatorTok{$}\NormalTok{coef[}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{], }\DecValTok{5}\NormalTok{)))}
+\NormalTok{\}}
+
+\KeywordTok{ggplotRegression}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{project2_files/figure-latex/unnamed-chunk-4-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## assumptions}
+\NormalTok{resids<-fit}\OperatorTok{$}\NormalTok{residuals; fitvals<-fit}\OperatorTok{$}\NormalTok{fitted.values}
+\KeywordTok{ggplot}\NormalTok{()}\OperatorTok{+}\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(fitvals,resids))}\OperatorTok{+}\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept=}\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{project2_files/figure-latex/unnamed-chunk-4-2} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coeftest}\NormalTok{(fit)[,}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{] }\CommentTok{## Normal-theory SEs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                           Estimate  Std. Error
+## (Intercept)          246.196995437 2.972035310
+## thalach_c             -0.008973280 0.129964707
+## trestbps_c             0.357709672 0.170169644
+## thalach_c:trestbps_c  -0.003585077 0.007646917
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coeftest}\NormalTok{(fit, }\DataTypeTok{vcov=}\KeywordTok{vcovHC}\NormalTok{(fit))[,}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{] }\CommentTok{## Robust SEs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                           Estimate  Std. Error
+## (Intercept)          246.196995437 2.982220199
+## thalach_c             -0.008973280 0.116801156
+## trestbps_c             0.357709672 0.159020831
+## thalach_c:trestbps_c  -0.003585077 0.007261943
+\end{verbatim}
+
+\emph{For every 1 mg/dl increase in a patient's cholesterol there is a
+decrease of 0.0090 in maximum heart rate when all other variables are
+constant. For every 1 mg/dl increase in a patient's cholesterol there is
+a increase of 0.358 in resting blood pressuure when all other variables
+are constant. When looking at both variables, there is a 0.0036 decrease
+in cholesterol. }
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{samp_distn<-}\KeywordTok{replicate}\NormalTok{(}\DecValTok{5000}\NormalTok{, \{}
+\NormalTok{boot_dat<-boot_dat<-heart[}\KeywordTok{sample}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(heart),}\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{),]}
+\NormalTok{fit2 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(chol }\OperatorTok{~}\StringTok{ }\NormalTok{thalach_c}\OperatorTok{*}\StringTok{ }\NormalTok{trestbps_c, }\DataTypeTok{data=}\NormalTok{heart)}
+\KeywordTok{coef}\NormalTok{(fit2)}
+\NormalTok{\})}
+
+\CommentTok{## Estimated SEs}
+\NormalTok{samp_distn}\OperatorTok{%>%}\NormalTok{t}\OperatorTok{%>%}\NormalTok{as.data.frame}\OperatorTok{%>%}\KeywordTok{summarize_all}\NormalTok{(sd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   (Intercept) thalach_c trestbps_c thalach_c:trestbps_c
+## 1           0         0          0                    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Logistic Regression }
+\NormalTok{data<-heart}\OperatorTok{%>%}\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{y=}\KeywordTok{ifelse}\NormalTok{(sex}\OperatorTok{==}\StringTok{"1"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 17
+##     age   sex    cp trestbps  chol   fbs restecg thalach exang oldpeak slope
+##   <dbl> <dbl> <dbl>    <dbl> <dbl> <dbl>   <dbl>   <dbl> <dbl>   <dbl> <dbl>
+## 1    63     1     3      145   233     1       0     150     0     2.3     0
+## 2    37     1     2      130   250     0       1     187     0     3.5     0
+## 3    41     0     1      130   204     0       0     172     0     1.4     2
+## 4    56     1     1      120   236     0       1     178     0     0.8     2
+## 5    57     0     0      120   354     0       1     163     1     0.6     2
+## 6    57     1     0      140   192     0       1     148     0     0.4     1
+## # ... with 6 more variables: ca <dbl>, thal <dbl>, target <dbl>,
+## #   thalach_c <dbl>, trestbps_c <dbl>, y <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit3<-}\KeywordTok{glm}\NormalTok{(y}\OperatorTok{~}\NormalTok{chol,}\DataTypeTok{data=}\NormalTok{data,}\DataTypeTok{family=}\KeywordTok{binomial}\NormalTok{(}\DataTypeTok{link=}\StringTok{"logit"}\NormalTok{))}
+\KeywordTok{coeftest}\NormalTok{(fit3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## z test of coefficients:
+## 
+##               Estimate Std. Error z value  Pr(>|z|)    
+## (Intercept)  2.8452138  0.6489634  4.3842 1.164e-05 ***
+## chol        -0.0083242  0.0025272 -3.2939 0.0009882 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(}\KeywordTok{coef}\NormalTok{(fit3))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept)        chol 
+##  17.2052371   0.9917104
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## Confusion matrix}
+\NormalTok{probs<-}\KeywordTok{predict}\NormalTok{(fit3,}\DataTypeTok{type=}\StringTok{"response"}\NormalTok{)}
+\KeywordTok{table}\NormalTok{(}\DataTypeTok{predict=}\KeywordTok{as.numeric}\NormalTok{(probs}\OperatorTok{>}\NormalTok{.}\DecValTok{5}\NormalTok{),}\DataTypeTok{truth=}\NormalTok{data}\OperatorTok{$}\NormalTok{y)}\OperatorTok{%>%}\NormalTok{addmargins}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        truth
+## predict   0   1 Sum
+##     0     8   1   9
+##     1    88 206 294
+##     Sum  96 207 303
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## plot density}
+\NormalTok{data}\OperatorTok{$}\NormalTok{logit<-}\KeywordTok{predict}\NormalTok{(fit3,}\DataTypeTok{type=}\StringTok{"link"}\NormalTok{)}
+\NormalTok{data}\OperatorTok{%>%}\KeywordTok{ggplot}\NormalTok{()}\OperatorTok{+}\KeywordTok{geom_density}\NormalTok{(}\KeywordTok{aes}\NormalTok{(logit,}\DataTypeTok{color=}\NormalTok{sex,}\DataTypeTok{fill=}\NormalTok{sex), }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{4}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\KeywordTok{c}\NormalTok{(.}\DecValTok{85}\NormalTok{,.}\DecValTok{85}\NormalTok{))}\OperatorTok{+}\KeywordTok{geom_vline}\NormalTok{(}\DataTypeTok{xintercept=}\DecValTok{0}\NormalTok{)}\OperatorTok{+}\KeywordTok{xlab}\NormalTok{(}\StringTok{"logit (log-odds)"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_rug}\NormalTok{(}\KeywordTok{aes}\NormalTok{(logit,}\DataTypeTok{color=}\NormalTok{sex))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{project2_files/figure-latex/unnamed-chunk-6-1} \end{center}
+
+\emph{The interaction is predicting the outcome that the patient is male
+from cholesterol levels. Cholesterol levels decreases log-odds of a
+patient being a male. Every one-unit increase in cholesterol the odds is
+mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting
+if the patient is really male. TNR is 8/96 which is the probablity that
+the pateint was ruled a male when in fact they are female. PPV is
+206/294 which is the proportion classified as male and who are.}
+
+\end{document}

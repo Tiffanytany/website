@@ -2,11 +2,9 @@
 title: "Project 2"
 author: "Tiffany Moyeda (ttm525)"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
-  showpagemeta: false
-
 ---
 
 
@@ -88,9 +86,9 @@ new&lt;-data.frame(chol=sample(heart$chol),sex=heart$sex)
 rand_dist[i]&lt;-mean(new[new$sex==&quot;0&quot;,]$chol)-
 mean(new[new$sex==&quot;1&quot;,]$chol)}
 {hist(rand_dist, main=&quot;&quot;,ylab=&quot;&quot;); abline(v = -22.01223,col=&quot;red&quot;) ; abline (v = 22.01223,col=&quot;red&quot;)}</code></pre>
-<p><img src="/project2_files/figure-html/unnamed-chunk-3-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="/Project2.0_files/figure-html/unnamed-chunk-3-1.png" width="768" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>mean(rand_dist&lt; -22.0 | rand_dist &gt; 22.0)</code></pre>
-<pre><code>## [1] 8e-04</code></pre>
+<pre><code>## [1] 2e-04</code></pre>
 <pre class="r"><code>t.test(data=heart,chol~sex)</code></pre>
 <pre><code>## 
 ##  Welch Two Sample t-test
@@ -145,11 +143,11 @@ ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) 
 }
 
 ggplotRegression(fit)</code></pre>
-<p><img src="/project2_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="/Project2.0_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>## assumptions
 resids&lt;-fit$residuals; fitvals&lt;-fit$fitted.values
 ggplot()+geom_point(aes(fitvals,resids))+geom_hline(yintercept=0, col=&quot;red&quot;)</code></pre>
-<p><img src="/project2_files/figure-html/unnamed-chunk-4-2.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="/Project2.0_files/figure-html/unnamed-chunk-4-2.png" width="768" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>coeftest(fit)[,1:2] ## Normal-theory SEs</code></pre>
 <pre><code>##                           Estimate  Std. Error
 ## (Intercept)          246.196995437 2.972035310
@@ -213,6 +211,5 @@ data$logit&lt;-predict(fit3,type=&quot;link&quot;)
 data%&gt;%ggplot()+geom_density(aes(logit,color=sex,fill=sex), alpha=.4)+
   theme(legend.position=c(.85,.85))+geom_vline(xintercept=0)+xlab(&quot;logit (log-odds)&quot;)+
   geom_rug(aes(logit,color=sex))</code></pre>
-<p><img src="/project2_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" />
-<em>The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.</em>
+<p><img src="/Project2.0_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" />
 <em>The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.</em></p>

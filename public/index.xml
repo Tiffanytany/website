@@ -34,6 +34,15 @@
     
     <item>
       <title>Project 2</title>
+      <link>/project2.0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project2.0/</guid>
+      <description>The following data there are 303 items (patients) and 13 predictor variables (age, sex, cholesterol, etc.) The variable to predict is encoded as 0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease. The following varaibles are the ones that I will be focusing on: Sex = (1 = male; 0 = female), thalach = maximum heart rate achieved, cp = chest pain type (0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease), trestbps = resting blood pressure (in mm Hg on admission to the hospital), and chol = serum cholestoral in mg/dl.</description>
+    </item>
+    
+    <item>
+      <title>Project 2</title>
       <link>/project2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

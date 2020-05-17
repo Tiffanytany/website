@@ -2,9 +2,13 @@
 title: "Project 2"
 author: "Tiffany Moyeda (ttm525)"
 output:
+showpagemeta: false
+
   html_document:
     df_print: paged
   pdf_document: default
+
+
 ---
 ```{r global_options, include=FALSE}
 library(knitr)
@@ -18,7 +22,8 @@ library(tibble)
 library(tinytex)
 library(lmtest)
 library(sandwich)
-library
+
+
 opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, fig.width=8,tidy.opts=list(width.cutoff=60),tidy=TRUE, R.options=list(max.print=100))
 ```
 

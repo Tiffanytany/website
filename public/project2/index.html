@@ -53,12 +53,23 @@
 </nav>
 
       
-        <section id="projects">
-  <div class="container">
-    <h3>Projects</h3>
-    <div class="panel panel-default">
-      <div class="panel-body">
-      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="/project2/">Project 2</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          January 1, 0001
+            &nbsp;&nbsp;
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
 
 
 <p><em>The following data there are 303 items (patients) and 13 predictor variables (age, sex, cholesterol, etc.) The variable to predict is encoded as 0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease. The following varaibles are the ones that I will be focusing on: Sex = (1 = male; 0 = female), thalach = maximum heart rate achieved, cp = chest pain type (0 to 4 where 0 means no heart disease and 1-4 means presence of heart disease), trestbps = resting blood pressure (in mm Hg on admission to the hospital), and chol = serum cholestoral in mg/dl.</em></p>
@@ -140,7 +151,7 @@ mean(new[new$sex==&quot;1&quot;,]$chol)}
 {hist(rand_dist, main=&quot;&quot;,ylab=&quot;&quot;); abline(v = -22.01223,col=&quot;red&quot;) ; abline (v = 22.01223,col=&quot;red&quot;)}</code></pre>
 <p><img src="/project2_files/figure-html/unnamed-chunk-3-1.png" width="768" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>mean(rand_dist&lt; -22.0 | rand_dist &gt; 22.0)</code></pre>
-<pre><code>## [1] 4e-04</code></pre>
+<pre><code>## [1] 8e-04</code></pre>
 <pre class="r"><code>t.test(data=heart,chol~sex)</code></pre>
 <pre><code>## 
 ##  Welch Two Sample t-test
@@ -264,13 +275,38 @@ data%&gt;%ggplot()+geom_density(aes(logit,color=sex,fill=sex), alpha=.4)+
   theme(legend.position=c(.85,.85))+geom_vline(xintercept=0)+xlab(&quot;logit (log-odds)&quot;)+
   geom_rug(aes(logit,color=sex))</code></pre>
 <p><img src="/project2_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" />
+<em>The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.</em>
 <em>The interaction is predicting the outcome that the patient is male from cholesterol levels. Cholesterol levels decreases log-odds of a patient being a male. Every one-unit increase in cholesterol the odds is mutiplied by 0.992. TPR is 206/209 which is the probabilty of detecting if the patient is really male. TNR is 8/96 which is the probablity that the pateint was ruled a male when in fact they are female. PPV is 206/294 which is the proportion classified as male and who are.</em></p>
 
-      </div>
-    </div>
-  </div>
-</section>
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
 
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = '';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
       
     </div>
 
